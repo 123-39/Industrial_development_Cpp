@@ -1,9 +1,10 @@
 #include "XMLreader.h"
 
-int main() {
-  XMLRdr XMLDoc("boby.xml");
+int main(int argc, char *argv[]) {
+  string filename = argv[2];
+  XMLRdr XMLDoc(filename);
   int iObjCnt = XMLNode::GetObjectCnt();
-  cout << "\nNumber of Node objects " << iObjCnt << endl;
+  cout << "Number of Node objects " << iObjCnt << endl;
 
   XMLNode* NodePtr = XMLDoc.GetRootNode();
   XMLNode* NodePtr2 = NodePtr->GetFirstChild();
@@ -11,7 +12,7 @@ int main() {
     string sEname = NodePtr2->GetNodeName();
     cout << sEname.c_str();
     string sVal = NodePtr2->GetElementValue("phone");
-    cout << "\tPhone\t:" << sVal.c_str() << endl;
+    cout << "Phone: " << sVal.c_str() << endl;
     NodePtr2 = NodePtr->GetNextChild();
   }
   XMLDoc.ResetReading();
