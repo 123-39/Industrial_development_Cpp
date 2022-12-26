@@ -62,7 +62,6 @@ XMLNode* XMLNode::AddChildNode(string sName) {
 
 void XMLNode::AddElementVal(string sKey, string sval) {
   XMLChildElements[sKey] = sval;
-  return;
 }
 
 XMLRdr::XMLRdr(string sFileName) {
@@ -72,9 +71,7 @@ XMLRdr::XMLRdr(string sFileName) {
   if (ReadFile() == false)
     cout << "Unable to open file";
   else
-    cout << "Fle opened successfuly";
-
-  return;
+    cout << "File opened successfuly";
 }
 
 bool XMLRdr::ReadFile() {
@@ -157,7 +154,6 @@ XMLRdr::~XMLRdr() {
     delete XMLRootNode;
   if (!XMLNode::GetObjectCnt())
     cout << "\nAll Node Objects deleted";
-  return;
 }
 
 string XMLRdr::GetDocName() {
