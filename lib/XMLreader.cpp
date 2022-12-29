@@ -24,8 +24,7 @@ void XMLNode::DeleteAll() {
 }
 
 void XMLNode::ResetReading() {
-  for (XMLNodeMapIter TmpItr = XMLChildNodes.begin();
-       TmpItr != XMLChildNodes.end(); TmpItr++) {
+  for (XMLNodeMapIter TmpItr = XMLChildNodes.begin(); TmpItr != XMLChildNodes.end(); TmpItr++) {
     if (TmpItr->second != nullptr) {
       if ((TmpItr->second->GetChildNodeCnt() != 0))
         TmpItr->second->ResetReading();
@@ -76,9 +75,9 @@ XMLRdr::XMLRdr(string sFileName) {
 
 bool XMLRdr::ReadFile() {
   FILE* fp = fopen(sDocName.c_str(), "r+");
-  // mistake 1
-  // if (fp == nullptr)
-  //   return false;
+//   mistake 1
+   if (fp == nullptr)
+     return false;
   char buf[1000];
   while (fgets(buf, 1000, fp)) {
     string sTmp = buf;
@@ -105,8 +104,8 @@ string XMLRdr::EatupWhiteSpace(string sInput) {
 
 bool XMLRdr::ProcessString(string sInput) {
   // mistake 2
-  // if (sInput[0] != '<')
-  //   return false;
+  if (sInput[0] != '<')
+      return false;
   switch (sInput[1]) {
     case '?':
     case '!':

@@ -4,15 +4,15 @@
 #include "XMLreader.h"
 
 TEST(XMLparse, check_exist) {
-  XMLRdr XMLDoc("boby.xml");
-  int iObjCnt = XMLNode::GetObjectCnt();
-  EXPECT_EQ(iObjCnt, 1);
-  XMLDoc.ResetReading();
-  XMLDoc.DeleteAll();
+    XMLRdr XMLDoc("../test/unit/boby.xml");
+    int iObjCnt = XMLNode::GetObjectCnt();
+    EXPECT_EQ(iObjCnt, 6);
+    XMLDoc.ResetReading();
+    XMLDoc.DeleteAll();
 }
 
 TEST(XMLparse, check_count) {
-  XMLRdr XMLDoc("boby.xml");
+  XMLRdr XMLDoc("../test/unit/boby.xml");
 
   XMLNode* NodePtr = XMLDoc.GetRootNode();
   XMLNode* NodePtr2 = NodePtr->GetFirstChild();
@@ -25,7 +25,8 @@ TEST(XMLparse, check_count) {
     cout << sEname.c_str();
 
     string sVal = NodePtr2->GetElementValue("phone");
-    EXPECT_EQ(sVal.c_str(), '09844400873');
+    std::cout << sVal.c_str() << std::endl;
+    EXPECT_EQ(sVal, ResNumb[i]);
 
     NodePtr2 = NodePtr->GetNextChild();
   }
@@ -37,6 +38,7 @@ TEST(XMLparse, check_count) {
 }
 
 int main(int argc, char** argv) {
+  testing::InitGoogleTest();
   return RUN_ALL_TESTS();
 }
 
