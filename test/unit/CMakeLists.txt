@@ -1,6 +1,6 @@
 project(tests)
 
-set(EXE_SOURCES XMLreaderTests.cpp)
+set(EXE_SOURCES XMLreaderTest.cpp)
 
 find_package(GTest REQUIRED)
 

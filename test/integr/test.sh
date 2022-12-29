@@ -11,7 +11,7 @@ fi
 
 output=$($path 1 "test/unit/body_fake.xml")
 if [[ $output == "Unable to open file" ]]; then
-	echo "OK"
+  echo "OK"
 else
-	echo "FAILED"
+  echo "FAILED"
 fi
